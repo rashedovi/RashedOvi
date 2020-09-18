@@ -1,0 +1,816 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Raleway:wght@200;300;400;500;600;700;800;900&family=Ubuntu:wght@300;400;500;700&display=swap');
+
+$font-stack: 'Raleway', sans-serif;
+$themecolor: #f39c12;
+
+@mixin padding($tobot,$rtlt){
+    padding: $tobot $rtlt;
+}
+@mixin transition($duration,$effect) {
+    -webkit-transition: all $duration $effect;-o-transition: all $duration $effect;
+    transition: all $duration $effect;
+}
+@mixin scale($value) {
+    -webkit-transform: scale($value);-ms-transform: scale($value);
+    transform: scale($value);
+}
+
+%allHeading{
+    position: relative;
+            padding-bottom: 20px;
+            h1{
+                font-size: 40px;
+                font-weight: 700;
+                text-align: center;
+                color: black;
+            }
+            .line{
+                width: 500px;
+                height: 1px;
+                background: $themecolor;
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%);
+
+                &::after{
+                    content: "";
+                    position: absolute;
+                    width: 30px;
+                    height: 8px;
+                    background: $themecolor;
+                    left: 50%;
+                    bottom: 50%;
+                    transform: translate(-50%, 50%);
+                }
+            }
+}
+
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    font-family: $font-stack;
+}
+header{
+    .navbar{
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        background: #343a40b3 !important;
+        .nav-item{
+            padding: 0 15px;
+            .nav-link{
+                color: #fff !important;
+                font-family: sans-serif;
+                font-size: 20px;
+                font-weight: 600;
+                padding: 50px 0;
+                position: relative;
+
+                &::after{
+                    content: "";
+                    position: absolute;
+                    width: 0;
+                    height: 3px;
+                    background: transparent;
+                    left: 0;
+                    bottom: -3px;
+                    transition: all .4s ease;
+                }
+
+                &:hover{
+                    color: $themecolor !important;
+                }
+                &:hover::after{
+                    width: 100%;
+                    background: $themecolor;
+                }
+            }
+            
+                .search{
+                    color: #fff !important;
+                    font-family: sans-serif;
+                    font-size: 20px;
+                    font-weight: 600;
+                    padding: 50px 0;
+                    display: inline-block;
+                    text-decoration: none;
+
+                    &:hover i{
+                        color: $themecolor;
+                    }
+                }
+                .dropdown-menu{
+                    left: -160px !important;
+                    padding: 0 !important;
+                    margin: 0 !important; 
+                    font-size: 1rem;
+                    color: #212529;
+                    border: 2px solid #fff !important;
+                    border-radius: inherit !important;
+                    background: #fff !important;
+                    .dropdown-item{
+                        padding: 0 !important;
+                        .form-control{
+                            border: 1px solid #ced4da00;
+                            &:focus{
+                                box-shadow: 0 0 0 0.2rem #0d6efd00;
+                            }
+                        }
+                        .btn-search{
+                            background: $themecolor;
+                            color: #fff;
+                            &:focus{
+                                box-shadow: 0 0 0 0.2rem #0d6efd00;
+                            }
+                        }
+                    }
+                }
+            
+        }
+    }
+    .header-banner{
+        background: url(../images/banner-bg.png);
+        background-position: top center;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        text-align: center;
+        position: relative;
+        .overlay{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: #343a404d;
+        }
+        .carousel-inner{
+            .carousel-item{
+                padding-top: 440px;
+                padding-bottom: 250px;
+                h1{
+                    font-size: 70px;
+                    font-weight: 400;
+                    color: $themecolor;
+                    text-align: right;
+                    margin-right: 110px;
+                    line-height: .5;
+                }
+                h2{
+                    font-size: 70px;
+                    font-weight: 700;
+                    color: #fff;
+                    line-height: inherit;
+                    margin-bottom: 160px;
+                }
+                .btn{
+                    font-size: 20px;
+                    font-weight: 600;
+                    background: transparent;
+                    color: #fff;
+                    border: 2px solid;
+                    border-radius: inherit;
+                    margin: 0 10px;
+
+                    &:hover{
+                        background: $themecolor;
+                        border-color: $themecolor;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// style for header end
+
+// style for about-me section start
+
+.about-me{
+    @include padding(100px,0);
+    .about-img{
+        .img-fluid{
+            height: 95vh !important;
+        }
+    }
+    .about-content{
+        padding-right: 50px;
+        
+        .heading{
+            @extend %allHeading;
+        }
+        .about-para{
+            @include padding(40px,0);
+            p{
+                font-size: 17px;
+            }
+        }
+        .about-progress{
+            .progressbar {
+                margin-bottom: 25px;;
+                box-shadow: inset 0px 1px 1px rgba(0,0,0,0);
+            }
+            .percentCount {
+                position: absolute;
+                right: -80px;
+                bottom: 50%;
+                transform: translateY(50%);
+                background: $themecolor;
+                padding: 3px 6px;
+                color: #fff;
+
+                &::after{
+                    content: "";
+                    border-top: 8px solid #27ff0000;
+                    border-bottom: 8px solid #0000ff00;
+                    border-right: 10px solid $themecolor;
+                    position: absolute;
+                    left: -10px;
+                    bottom: 50%;
+                    transform: translateY(50%);
+                }
+            }
+            h2{
+                font-size: 17px;
+                font-weight: 600;
+            }
+        }
+    }
+}
+
+// style for about me section end
+
+
+// style for my service section start
+.my-service{
+    padding-bottom: 100px;
+    .service-heading{
+        padding: 80px 0;
+        .heading{
+            @extend %allHeading;
+        }
+    }
+    .service-body{
+        padding-bottom: 50px;
+        .col-lg-3{
+            overflow: hidden;
+        }
+        .service-content{
+            text-align: center;
+            border: 2px solid #f2f2f2;
+            padding: 50px 25px;
+            position: relative;
+            margin-bottom: 25px;
+            i{  
+                width: 60px;
+                height: 60px;
+                background: #919190;
+                line-height: 60px;
+                border-radius: 50%;
+                font-size: 20px;
+                color: #fff;
+            }
+            h2{
+                font-size: 20px;
+                font-weight: 700;
+                margin: 30px 0; 
+            }
+            p{
+                font-size: 18px;
+            }
+
+            &::after{
+                content: "";
+                position: absolute;
+                width: 44px;
+                height: 160px;
+                background: transparent;
+                left: 0;
+                top: -43px;
+                transform: rotate(45deg);
+                overflow: hidden;
+            }
+            &::before{
+                content: "";
+                position: absolute;
+                width: 30px;
+                height: 30px;
+                background: transparent;
+                left: -2px;
+                top: -2px;
+                
+            }
+            &:hover{
+                background: $themecolor;
+                border: 2px solid $themecolor;
+                color: #fff;
+                cursor: pointer;
+
+                i{
+                    background: #fff;
+                    color: $themecolor;
+                }
+
+                &::after{
+                    background: #fff;
+                }
+                &::before{
+                    background: #fff;
+                    border-top: 2px solid $themecolor;
+                    border-left: 2px solid $themecolor;
+                }
+            }
+        }
+    }
+}
+// style for my service section end
+
+// style for my statistic section start
+.my-statistic{
+    position: relative;
+    background: url(../images/statistic.png);
+    padding: 140px 0;
+    overflow: hidden;
+    .overlay{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: #00000059;
+        top: 0;
+        left: 0;
+    }
+    .statistic-heading{
+        .heading{
+            @extend %allHeading;
+            
+            h1{
+                color: #fff !important;
+            }
+        }
+    }
+    .bridge{
+        position: relative;
+        &::after{
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            background: #fff;
+            left: 0;
+            bottom: 36%;
+            transform: translateY(50%) scaleX(.7);
+        }
+    }
+    .statistic-content{
+        color: #fff;
+        z-index: 1;
+        position: relative;
+        padding-top: 80px;
+        text-align: center;
+        h2{
+            font-weight: 700;
+            font-family: sans-serif;
+            font-size: 40px;
+        }
+        i{
+            width: 100px;
+            height: 100px;
+            background: #fff;
+            color: $themecolor;
+            display: inline-block;
+            line-height: 100px;
+            text-align: center;
+            border-radius: 50%;
+            font-size: 50px;
+            margin: 40px 0;
+        }
+        h3{
+            font-size: 25px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+    }
+
+}
+// style for my statistic section end
+
+// style for my work section start
+.my-work{
+    padding: 140px 0;
+    .work-heading{
+        .heading{
+            @extend %allHeading;
+        }
+    }
+    .work-btn{
+        padding: 80px 0;
+        text-align: center;
+        .btn{
+            font-size: 20px;
+            font-weight: 500;
+            font-family: sans-serif;
+            @include transition(.4s, linear);
+
+            &:hover{
+                cursor: pointer;
+                background: $themecolor;
+                border-radius: 0;
+                
+            }
+        }
+    }
+    .work-image{
+        position: relative;
+        color: #fff;
+        overflow: hidden;
+        margin-bottom: 25px;
+        .img-overlay{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            background: #0000008c;
+            @include scale(0);
+            @include transition(.5s, linear);
+        }
+        i{
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 60px;
+            height: 60px;
+            background: $themecolor;
+            line-height: 60px;
+            border-radius: 50%;
+            font-size: 20px;
+            color: #fff;
+            text-align: center;
+            opacity: 0;
+            @include transition(.4s, linear);
+        }
+        h2{
+            position: absolute;
+            left: 20px;
+            bottom: 0;
+            font-size: 20px;
+            text-transform: uppercase;
+            font-weight: 700;
+            opacity: 0;
+            @include transition(.4s, linear);
+        }
+        h3{
+            position: absolute;
+            left: 20px;
+            bottom: 0;
+            font-size: 20px;
+            color: #b5b4b4;
+            opacity: 0;
+            @include transition(.4s, linear);
+        }
+
+        &:hover{
+            cursor: pointer;
+            .img-overlay{
+                @include scale(1);
+            }
+            i{
+                opacity: 1;
+                right: 20px;
+                top: 20px;
+            }
+            h2{
+                opacity: 1;
+                bottom: 40px;
+            }
+            h3{
+                opacity: 1;
+                bottom: 10px;
+            }
+        }
+    }
+}
+// style for my work section end
+
+// style for recent-story section start
+.recent-story{
+    padding-bottom: 150px;
+    .recent-heading{
+        padding-bottom: 80px;
+        .heading{
+            @extend %allHeading;
+        }
+    }
+    .recent-story-left{
+        margin: 0 10px;
+        .story-content{
+            padding: 24px 30px;
+            border: 2px solid #f2f2f2;
+            h4{
+                font-size: 17px;
+            }
+            h2{
+                font-size: 19px;
+                font-weight: 700;
+                margin-bottom: 0;
+                color: $themecolor;
+            }
+            p{
+                font-size: 17px;
+                margin: 30px 0;
+                text-align: justify;
+            }
+            .btn{
+                border-radius: inherit;
+                font-size: 17px;
+                &:hover{
+                    background: #aaaaaa;
+                }
+            }
+        }
+        .story-image{
+            .img-fluid{
+                width: 100%;
+            }
+        }
+    }
+}
+// style for recent-story section end
+
+// style for life-story section start
+.life-story{
+    padding: 60px 0;
+    background: #262626;
+    .life-changing-story{
+        padding: 60px 0;
+        padding-left: 30px;
+        .life-image{}
+        .life-heading{
+            padding-bottom: 60px;
+            .heading{
+                @extend %allHeading;
+                h1{
+                    color: #fff !important;
+                    text-align: left;
+                }
+                .line{
+                    left: 32%;
+                    transform: translateX(-50%);
+                    width: 450px;
+                }
+            }
+        }
+        .life-content{
+            color: #c7c7c7;
+            p{
+                margin-bottom: 30px;
+                font-size: 18px; 
+            }
+        }
+    }
+}
+// style for life-story section end
+
+// style for clients-feedback section start
+.clients-feedback{
+    padding: 140px 0;
+    .feedback-heading{
+        padding-bottom: 80px;
+        .heading{
+            @extend %allHeading;
+        }
+    }
+    .feedback-content{
+        background: #f6f6f6;
+        padding: 30px;
+        position: relative;
+        margin: 0 10px;
+        h2{
+            font-size: 20px;
+            font-weight: 700;
+            color: #696868;
+        }
+        p{
+            font-size: 17px;
+            margin-bottom: 0;
+            color: #838282;
+        }
+        &::after{
+            content: "";
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: #f6f6f6;
+            transform: rotate(45deg);
+            left: 65px;
+            bottom: -15px;
+        }
+    }
+    .client-info{
+        display: flex;
+        padding-left: 50px;
+        align-items: center;
+        margin-top: 40px;
+        .client-details{
+            margin-left: 30px;
+            h3{
+                font-size: 19px;
+                font-weight: 700;
+                color: $themecolor;
+            }
+            h4{
+                font-size: 16px;
+                font-style: italic;
+                color: #696868;
+            }
+        }
+    }  
+}
+// style for clients-feedback section end
+
+// style for latest-tweet section end
+.latest-tweet{
+    background: url(../images/tweet-bg.png);
+    overflow: hidden;
+    position: relative;
+    color: #fff;
+    text-align: center;
+    padding: 140px 0;
+    .tweet-overlay{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: #00000063;
+        left: 0;
+        top: 0;
+    }
+    .tweet-heading{
+        .heading{
+            @extend %allHeading;
+            h1{
+                color: #fff;
+            }
+        }
+
+    }
+    .tweet-content{
+        z-index: 1;
+        position: relative;
+        padding-top: 70px;
+        p{
+            font-size: 20px;
+            .highlight{
+                color: $themecolor;
+            }
+        }
+        
+    }
+}
+// style for latest-tweet section end
+// style for get-in-touch section start
+.get-in-touch{
+    padding: 140px 0;
+    .contact-heading{
+        .heading{
+            @extend %allHeading;
+        }
+        p{
+            font-size: 20px;
+            text-align: justify;
+            width: 75%;
+            margin: 60px auto;
+        }
+    }
+    .contact-submit{
+        form{
+            label{
+                font-size: 24px;
+            }
+            input{
+                border: inherit;
+                border-bottom: 2px solid;
+                border-radius: inherit;
+                font-size: 20px;
+                &:focus{
+                    box-shadow: inherit;
+                    border-bottom: 2px solid $themecolor; 
+                }
+                &:hover{
+                    border-bottom: 2px solid $themecolor;
+                }
+            }
+            textarea{
+                border: inherit;
+                border-bottom: 2px solid;
+                border-radius: inherit;
+                &:focus{
+                    box-shadow: inherit;
+                    border-bottom: 2px solid $themecolor; 
+                }
+                &:hover{
+                    border-bottom: 2px solid $themecolor;
+                }
+            }
+            .btn-lg{
+                border-radius: inherit;
+                background: $themecolor !important;
+                border-color: $themecolor;
+                color: #fff;
+                font-weight: 700;
+                &:hover{
+                    background: #fff !important;
+                    color: $themecolor;
+                }
+            }
+        }
+    }
+}
+// style for get-in-touch section end
+
+// style for map section start
+.map{
+    position: relative;
+    .embed-responsive-21by9{
+        &::before{
+            padding-top: 32.857143%;
+        }
+        
+    }
+    iframe{
+        height: 500px !important;
+    }
+    address{
+        position: absolute;
+        top: 50%;
+        right: 120px;
+        width: 250px;
+        background: $themecolor;
+        padding: 25px;
+        transform: translateY(-50%);
+        color: #fff;
+        h4{
+            font-size: 18px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+        p{
+            font-size: 16px;
+        }
+    }
+}
+// style for map section end
+// style for follow-me section start
+.follow-me{
+    padding: 140px 0;
+    .follow-heading{
+        padding-bottom: 100px;
+        .heading{
+            @extend %allHeading;
+        }
+    }
+    .social-link{
+        text-align: center;
+        a{
+            text-decoration: none;
+            height: 40px;
+            width: 40px;
+            border: 1px solid #f2f2f2;
+            display: inline-block;
+            line-height: 46px;
+            color: $themecolor;
+            text-align: center;
+            &:hover{
+                background: $themecolor;
+                color: #fff;
+            }
+            i{
+                font-size: 24px;
+            }
+        }
+
+    }
+}
+// style for follow-me section end
+
+// style for footer section start
+footer{
+    background: $themecolor;
+    .footer-content{
+        padding: 50px 0;
+        text-align: center;
+        p{
+            font-size: 20px;
+            color: #505050;
+            margin-bottom: 0;
+            span{
+                color: #fff;
+            }
+        }
+    }
+}
+// style for footer section end
+
+
